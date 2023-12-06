@@ -29,9 +29,9 @@ RUN [ "/bin/bash", "-c", "python3 -c 'import venv' && python3 -m venv venv/" ]
 # Download the repo
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
-# Ensure 0.0.0.0:7860
+# Ensure 0.0.0.0:7860 and CPU use only
 RUN sed -i 's/\#export\ COMMANDLINE_ARGS/export\ COMMANDLINE_ARGS/g' ./stable-diffusion-webui/webui-user.sh \
- && sed -i 's/COMMANDLINE_ARGS\=\"\"/COMMANDLINE_ARGS\=\"\-\-listen\ \-\-no\-download\-sd\-model\ \-\-lowvram\ \-\-use\-cpu\ all\ \-\-precision\ full\ \-\-no\-half\ \-\-skip\-torch\-cuda\-test"/g' ./stable-diffusion-webui/webui-user.sh \
+ && sed -i 's/COMMANDLINE_ARGS\=\"\"/COMMANDLINE_ARGS\=\"\-\-listen\ \-\-no\-download\-sd\-model\ \-\-use\-cpu\ all\ \-\-precision\ full\ \-\-no\-half\ \-\-skip\-torch\-cuda\-test"/g' ./stable-diffusion-webui/webui-user.sh \
  && cp ./stable-diffusion-webui/webui-user.sh ./webui-user.sh
 
 # Run the script
