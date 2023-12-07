@@ -35,7 +35,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 # Ensure 0.0.0.0:7860
 RUN sed -i 's/\#export\ COMMANDLINE_ARGS/export\ COMMANDLINE_ARGS/g' ./stable-diffusion-webui/webui-user.sh \
- && sed -i 's/COMMANDLINE_ARGS\=\"\"/COMMANDLINE_ARGS\=\"\-\-listen\ \-\-no\-download\-sd\-model\ \-\-xformers\ \-\-opt\-sdp\-attention\ \-\-precision\ full\ \-\-no\-half\"/g' ./stable-diffusion-webui/webui-user.sh \
+ && sed -i 's/COMMANDLINE_ARGS\=\"\"/COMMANDLINE_ARGS\=\"\-\-listen\ \-\-no\-download\-sd\-model\ \-\-xformers\ \-\-opt\-sdp\-attention\ \-\-precision\ full\ \-\-no\-half\ \-\-medvram\ \-\-lowvram\"/g' ./stable-diffusion-webui/webui-user.sh \
  && cp ./stable-diffusion-webui/webui-user.sh ./webui-user.sh
 
 # Run the script
