@@ -35,7 +35,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 # Ensure 0.0.0.0:7860
 RUN sed -i 's/\#export\ COMMANDLINE_ARGS/export\ COMMANDLINE_ARGS/g' ./stable-diffusion-webui/webui-user.sh \
- && sed -i 's/COMMANDLINE_ARGS\=\"\"/COMMANDLINE_ARGS\=\"\-\-listen\ \-\-no\-download\-sd\-model\ \-\-xformers\ \-\-opt\-sdp\-attention\ \-\-precision\ full\ \-\-no\-half\ \-\-medvram\ \-\-lowvram\"/g' ./stable-diffusion-webui/webui-user.sh \
+ && sed -i 's/COMMANDLINE_ARGS\=\"\"/COMMANDLINE_ARGS\=\"\-\-listen\ \-\-no\-download\-sd\-model\ \-\-xformers\ \-\-opt\-sdp\-attention\ \-\-precision\ full\ \-\-no\-half\ \-\-medvram\ \-\-lowvram\ \-\-enable\-insecure\-extension\-access\"/g' ./stable-diffusion-webui/webui-user.sh \
  && echo export\ PYTORCH_CUDA_ALLOC_CONF\=garbage_collection_threshold\:0\.6\,max_split_size_mb\:128 >> ./stable-diffusion-webui/webui-user.sh \
  && cp ./stable-diffusion-webui/webui-user.sh ./webui-user.sh
 
